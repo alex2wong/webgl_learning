@@ -38,10 +38,10 @@ function main() {
 
   // gl.vertexAttrib3f(a_Position, -0.5, -0.5, 0.0);
   var positions = [];
-  positions.push(new Float32Array([0.1, 0.0, 0.0]));
-  positions.push(new Float32Array([0.6, 0.0, 0.0]));
-  positions.push(new Float32Array([0.9, 0.0, 0.0]));
-  positions.push(new Float32Array([0.6, 0.5, 0.0]));
+  positions.push(new Float32Array([0.1, 0.0, 0.1]));
+  positions.push(new Float32Array([0.6, 0.0, 0.9]));
+  positions.push(new Float32Array([0.9, 0.0, 0.4]));
+  positions.push(new Float32Array([0.6, 0.5, 0.7]));
   positions.push(new Float32Array([-0.6, -0.6, 0.0]));
 
   gl.clearColor(0.1, 0.1, 0.1, 1);

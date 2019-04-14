@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas 1W point TEST</title>
+</head>
+<body>
+    <canvas id="canv" height="600"></canvas>
+</body>
+<script>
+    var canv = document.querySelector('#canv');
+    var ctx = canv.getContext('2d');
+
+    function renderFrame() {
+        ctx.clearRect(0, 0, 400, 600);
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, 400, 600);
+        ctx.strokeStyle = '#ccc';
+
+        var positions = [];
+        var num = 10000;
+        for (var j = 0; j < num; j +=1) {
+            positions.push([Math.random() * 400, Math.random() * 600]);
+            ctx.beginPath();
+            ctx.arc(positions[j][0], positions[j][1], 2, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+        requestAnimationFrame(renderFrame);
+    }
+    (function main() {
+        renderFrame();
+    })()
+</script>
+</html>

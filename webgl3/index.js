@@ -5,7 +5,7 @@ attribute vec4 a_Position;
 void main() {
     // position (can be vec4(0.2,0.2,0.1,1.0);) relative to canvas..
     gl_Position = a_Position; 
-    gl_PointSize = 20.00;
+    gl_PointSize = 6.00;
 }
 `;
 
@@ -19,7 +19,7 @@ void main() {
 }
 `;
 
-function main() {
+function renderFrame() {
   var canvas = document.querySelector("#canv");
   var gl = getWebglContext(canvas); // : WebGLRenderingContext
   if (!gl) {
@@ -42,14 +42,13 @@ function main() {
 
   // gl.vertexAttrib3f(a_Position, -0.5, -0.5, 0.0);
   var positions = [];
-  positions.push([0.1, 0.0]);
-  positions.push([0.6, 0.0]);
-  positions.push([0.9, 0.0]);
-  positions.push([0.6, 0.5]);
-  positions.push([-0.6, -0.6]);
+  var num = 10000;
+  for (var j = 0; j < num; j +=1) {
+    positions.push([Math.random() * 2 - 1, Math.random() * 2 - 1]);
+  }
 
   gl.clearColor(0.1, 0.1, 0.1, 1);
-  console.log("clearCanvas by gl.");
+
   // use previous clearColor to clear canvas ! if no clearColor, default.
   gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -57,8 +56,8 @@ function main() {
     // pass positon to vertextShader..
     gl.vertexAttrib2f(a_Position, positions[ii][0], positions[ii][1]);
     if (positions[ii] instanceof Array && positions[ii].length > 1) {
-        console.log('p index: ' + ii + ' pointX: ' + positions[ii][0]);
-        if (positions[ii][0] > 0.2) {
+        // console.log('p index: ' + ii + ' pointX: ' + positions[ii][0]);
+        if (positions[ii][0] > positions[ii][1]) {
             // uniform4f , pass vec4 to u_FragColor in FragShader.
             gl.uniform4f(u_FragColor, 0.9, 0.6, 0.3, 1);
         } else {
@@ -67,6 +66,11 @@ function main() {
     }
     gl.drawArrays(gl.POINTS, 0, 1);
   }
+  requestAnimationFrame(renderFrame);
+}
+
+function main() {
+  renderFrame();
 }
 
 function getWebglContext(element) {

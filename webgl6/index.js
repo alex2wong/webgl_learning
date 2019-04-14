@@ -34,7 +34,7 @@ function renderFrame() {
 
 
   var flatArray = [];
-  for (var j = 10000; j>0;j--) {
+  for (var j = 600; j>0;j--) {
     flatArray.push(Math.random()*2 - 1);
   }
   var n = initVertexBuffers(gl, flatArray);
@@ -47,10 +47,21 @@ function renderFrame() {
   gl.uniform4f(u_FragColor, 0.7,0.6,0.3,0.8);
 
   gl.clearColor(0.1, 0.1, 0.1, 1);
-  // use previous clearColor to clear canvas ! if no clearColor, default.
-  gl.clear(gl.COLOR_BUFFER_BIT);
-  gl.drawArrays(gl.POINTS, 0, n);
-  requestAnimationFrame(renderFrame);
+  //// use previous clearColor to clear canvas ! if no clearColor, default.
+//   gl.clear(gl.COLOR_BUFFER_BIT);
+//   gl.drawArrays(gl.LINES, 0, Math.round(n/3));
+
+  for (var jj = 0; jj < 10; jj +=3) {
+    gl.drawArrays(gl.TRIANGLES, jj, 3); // n still prez POINT count. 4 vertex for 2 triangle.
+
+    // gl.drawArrays(gl.POINTS, 0, 10) count means POINT count !
+  }
+
+  gl.uniform4f(u_FragColor, 0.2,0.6,0.3,0.8);
+  for (var jj = 0; jj < 10; jj +=3) {
+    gl.drawArrays(gl.LINE_LOOP, jj, 3);
+  }
+//   requestAnimationFrame(renderFrame);
 }
 
 function main() {
