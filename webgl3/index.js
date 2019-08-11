@@ -5,7 +5,7 @@ attribute vec4 a_Position;
 void main() {
     // position (can be vec4(0.2,0.2,0.1,1.0);) relative to canvas..
     gl_Position = a_Position; 
-    gl_PointSize = 6.00;
+    gl_PointSize = 4.00;
 }
 `;
 
@@ -44,6 +44,7 @@ function renderFrame() {
   var positions = [];
   var num = 10000;
   for (var j = 0; j < num; j +=1) {
+    // 1w points
     positions.push([Math.random() * 2 - 1, Math.random() * 2 - 1]);
   }
 

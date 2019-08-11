@@ -19,6 +19,9 @@ void main() {
 }
 `;
 
+// point Number, would random *2 positionValue.
+const pNumber = 10000;
+
 function renderFrame() {
   var canvas = document.querySelector("#canv");
   var gl = getWebglContext(canvas); // : WebGLRenderingContext
@@ -34,7 +37,7 @@ function renderFrame() {
 
 
   var flatArray = [];
-  for (var j = 10000; j>0;j--) {
+  for (var j = pNumber * 2; j > 0; j--) {
     flatArray.push(Math.random()*2 - 1);
   }
   var n = initVertexBuffers(gl, flatArray);
@@ -77,6 +80,7 @@ function initVertexBuffers(gl, flatArray){
 
     var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
     // pass data to a_Position(address) attributes in vertextShader..
+    //// gl.vertexAttribPointer(attr, stepSize, precision, .., stride, offset);
     gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(a_Position);
 
