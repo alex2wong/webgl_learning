@@ -65,7 +65,7 @@ void main() {
 
 [Canvas 1w个点动画](https://alex2wong.github.io/webgl_learning/webgl5/index.html)
 
-[WebGL 1w个点动画不开 glBuffer](https://alex2wong.github.io/webgl_learning/webgl4/index.html)
+[WebGL 1w个点动画不开 glBuffer](https://alex2wong.github.io/webgl_learning/webgl3/index.html)
 
 [WebGL 1w个点动画开 glBuffer](https://alex2wong.github.io/webgl_learning/webgl4/index.html)
 
